@@ -1,3 +1,8 @@
+---
+title: Quizzes
+description: A set of answers to the quiz questions from GFE
+---
+
 # Quizzes
 
 ## [Explain how prototypal inheritance works](https://www.greatfrontend.com/questions/quiz/explain-how-prototypal-inheritance-works)
