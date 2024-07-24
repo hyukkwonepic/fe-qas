@@ -217,3 +217,27 @@ In JavaScript, let, var, and const are all keywords used to declare variables, b
 
     - `console.log(y)` is executed. Since `y` is in the TDZ and no property exists for it yet in the lexical environment, this throws a ReferenceError.
     - The declaration and initialization `let y = 10` is never reached due to the error. If it were reached, this is where a property would be created in the lexical environment and initialized with the value 10.
+
+## [What does `* { box-sizing: border-box; }` do?](https://www.greatfrontend.com/questions/quiz/what-does-box-sizing-border-box-do-what-are-its-advantages)
+
+- By default, elements have `box-sizing: content-box` applied, and only the content size is being accounted for if an element has height and width specified. `box-sizing: border-box` changes how the width and height of elements are being calculated, border and padding are also being included in the calculation.
+- Taking into account paddings and borders as part of the box model resonates better with how designers actually imagine content in grids. This is a much more intuitive way to think about boxes and hence many CSS frameworks set `* { box-sizing: border-box; }` globally, so that all elements use such a box model by default.
+
+## [What is CSS selector specificity and how does it work?](<[asdf](https://www.greatfrontend.com/questions/quiz/what-is-css-selector-specificity-and-how-does-it-work)>)
+
+- According to the CSS specification, specificity is calculated as a three-part value: A, B, C. Each part represents:
+
+  - A: Number of ID selectors. `#header` (1,0,0)
+  - B: Number of class selectors, attribute selectors, and pseudo-classes. `.button`, `[type="text"]`, `:hover` (0,1,0)
+  - C: Number of type selectors and pseudo-elements. `div`, `::before` (0,0,1)
+
+- The first rule wins because its specificity (1,1,0) is higher than the second (0,2,0).
+
+  ```
+  #sidebar .widget { background: blue; }
+  .widget-area .my-widget { background: red; }
+  ```
+
+- It's important to note that inline styles, while not part of this calculation, always override external stylesheets. They're considered separately in the cascade.
+- `!important` can override specificity, it's generally considered a last resort.
+- When writing CSS UI component library code, it is important that they have low specificities so that users of the library can override them
