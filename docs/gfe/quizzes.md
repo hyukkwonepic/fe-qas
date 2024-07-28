@@ -58,42 +58,42 @@ description: A set of answers to the quiz questions from GFE
 The following rules are applied to this:
 
 1. If the `new` keyword is used when calling the function, `this` inside the function is a brand new object.
-   ```
-    function ConstructorExample() {
-        console.log(this);
-        this.value = 10;
-        console.log(this);
-    }
-    new ConstructorExample();
-    // -> {}
-    // -> { value: 10 }
+   ```js
+   function ConstructorExample() {
+     console.log(this);
+     this.value = 10;
+     console.log(this);
+   }
+   new ConstructorExample();
+   // -> {}
+   // -> { value: 10 }
    ```
 2. If `apply`, `call`, or `bind` are used to call/create a function, this inside the function is the object that is passed in as the argument.
 
-   ```
+   ```js
    function fn() {
-    console.log(this);
+     console.log(this);
    }
 
    var obj = {
-    value: 5
+     value: 5,
    };
 
    var boundFn = fn.bind(obj);
 
-   boundFn();     // -> { value: 5 }
-   fn.call(obj);  // -> { value: 5 }
+   boundFn(); // -> { value: 5 }
+   fn.call(obj); // -> { value: 5 }
    fn.apply(obj); // -> { value: 5 }
    ```
 
 3. If a function is called as a method, such as `obj.method()` — this is the object that the function is a property of.
 
-   ```
+   ```js
    var obj = {
-    value: 5,
-    printThis: function() {
-        console.log(this);
-    }
+     value: 5,
+     printThis: function () {
+       console.log(this);
+     },
    };
 
    obj.printThis(); // -> { value: 5, printThis: ƒ }
@@ -101,7 +101,7 @@ The following rules are applied to this:
 
 4. If a function is invoked as a free function invocation, meaning it was invoked without any of the conditions present above, this is the global object. In a browser, it is the window object. If in strict mode ('use strict'), this will be undefined instead of the global object.
 
-   ```
+   ```js
    function fn() {
      console.log(this);
    }
@@ -113,12 +113,12 @@ The following rules are applied to this:
 
 6. If the function is an ES2015 arrow function, it ignores all the rules above and receives the `this` value of its surrounding scope at the time it is created.
 
-   ```
+   ```js
    const obj = {
-    value: 'abc',
-    createArrowFn: function() {
-        return () => console.log(this);
-    }
+     value: "abc",
+     createArrowFn: function () {
+       return () => console.log(this);
+     },
    };
 
    const arrowFn = obj.createArrowFn();
@@ -241,3 +241,84 @@ In JavaScript, let, var, and const are all keywords used to declare variables, b
 - It's important to note that inline styles, while not part of this calculation, always override external stylesheets. They're considered separately in the cascade.
 - `!important` can override specificity, it's generally considered a last resort.
 - When writing CSS UI component library code, it is important that they have low specificities so that users of the library can override them
+
+## [What is the CSS `display` property and can you give a few examples of its use?](https://www.greatfrontend.com/questions/quiz/what-is-the-css-display-property-and-can-you-give-a-few-examples-of-its-use)
+
+| `display` Value | Description                                                                                                                                                                                                            |
+| :-------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `none`          | Does not display an element (the element no longer affects the layout of the document). All child element are also no longer displayed. The document is rendered as if the element did not exist in the document tree. |
+| `block`         | The element consumes the whole line in the block direction (which is usually horizontal).                                                                                                                              |
+| `inline`        | Elements can be laid out beside each other.                                                                                                                                                                            |
+| `inline-block`  | Similar to `inline`, but allows some `block` properties like setting `width` and `height`.                                                                                                                             |
+| `flex`          | Behaves as a block-level `flex` container, which can be manipulated using flexbox model.                                                                                                                               |
+| `grid`          | Behaves as a block-level `grid` container using grid layout.                                                                                                                                                           |
+| `table`         | Behaves like the `<table>` element.                                                                                                                                                                                    |
+| `table-row`     | Behaves like the `<tr>` element.                                                                                                                                                                                       |
+| `table-cell`    | Behaves like the `<td>` element.                                                                                                                                                                                       |
+| `list-item`     | Behaves like a `<li>` element which allows it to define `list-style-type` and `list-style-position`.                                                                                                                   |
+
+## [What is the difference between `==` and `===` in JavaScript?](https://www.greatfrontend.com/questions/quiz/what-is-the-difference-between-double-equal-and-triple-equal)
+
+- The `==` operator will compare for equality after doing any necessary type conversions.
+
+  - ```js
+    42 == "42"; // true
+    0 == false; // true
+    null == undefined; // true
+    [] == false; // true
+    "" == false; // true
+
+    // However, when using ==, unintuitive results can happen:
+    1 == [1]; // true
+    0 == ""; // true
+    0 == "0"; // true
+    "" == "0"; // false
+    ```
+
+  - Use `==` when you want to compare values with type coercion (and understand the implications of it). Practically, the only valid use case for the equality operator is when against null and undefined for convenience.
+
+- The `===` operator will not do type conversion, so if two values are not the same type `===` will simply return false.
+  - ```js
+    console.log(42 === "42"); // false
+    console.log(0 === false); // false
+    console.log(null === undefined); // false
+    console.log([] === false); // false
+    console.log("" === false); // false
+    ```
+  - Use `===` when you want to ensure both the value and the type are the same, which is the safer and more predictable choice in most cases.
+- Using `===` (strict equality) is generally recommended to avoid the pitfalls of type coercion, which can lead to unexpected behavior and bugs in your code. It makes the intent of your comparisons clearer and ensures that you are comparing both the value and the type.
+
+## [What's the difference between a variable that is: `null`, `undefined` or undeclared?](https://www.greatfrontend.com/questions/quiz/whats-the-difference-between-a-variable-that-is-null-undefined-or-undeclared-how-would-you-go-about-checking-for-any-of-these-states?list=one-week)
+
+- Undeclared variables are created when you assign a value to an identifier that is not previously created using `var`, `let` or `const`. In strict mode, a `ReferenceError` will be thrown when you try to assign to an undeclared variable. Undeclared variables will be defined globally, outside of the current scope.
+
+  - ```js
+    function foo() {
+      x = 1; // Throws a ReferenceError in strict mode
+    }
+
+    foo();
+    console.log(x); // 1
+    ```
+
+- A variable that is `undefined` is a variable that has been declared, but not assigned a value. It is of type `undefined`. If a function does not return any value as the result of executing it is assigned to a variable, the variable also has the value of `undefined`.
+
+  - ```js
+    let foo;
+    console.log(foo); // undefined
+    console.log(foo === undefined); // true
+    console.log(typeof foo === "undefined"); // true
+
+    function bar() {} // Returns undefined if there is nothing returned.
+    let baz = bar();
+    console.log(baz); // undefined
+    ```
+
+- A variable that is `null` will have been explicitly assigned to the `null` value. It represents no value and is different from undefined in the sense that it has been explicitly assigned.
+  - ```js
+    const foo = null;
+    console.log(foo === null); // true
+    console.log(typeof foo === "object"); // true
+    ```
+
+## [What's the difference between `.call` and `.apply`?](https://www.greatfrontend.com/questions/quiz/whats-the-difference-between-call-and-apply?list=one-week)
