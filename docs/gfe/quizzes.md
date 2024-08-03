@@ -322,3 +322,85 @@ In JavaScript, let, var, and const are all keywords used to declare variables, b
     ```
 
 ## [What's the difference between `.call` and `.apply`?](https://www.greatfrontend.com/questions/quiz/whats-the-difference-between-call-and-apply?list=one-week)
+
+`.call` and `.apply` are both used to invoke functions with a specific this context and arguments. The primary difference lies in how they accept arguments:
+
+- `.call(thisArg, arg1, arg2, ...)`: Takes arguments individually.
+- `.apply(thisArg, [argsArray])`: Takes arguments as an array.
+
+```js
+function add(a, b) {
+  return a + b;
+}
+
+console.log(add.call(null, 1, 2)); // 3
+console.log(add.apply(null, [1, 2])); // 3
+```
+
+## [Describe the difference between a cookie, `sessionStorage` and `localStorage`.](https://www.greatfrontend.com/questions/quiz/describe-the-difference-between-a-cookie-sessionstorage-and-localstorage?list=one-week)
+
+All of the following are mechanisms of storing data on the client, the user's browser in this case. localStorage and sessionStorage both implement the Web Storage API interface.
+
+- Cookies: Suitable for server-client communication, small storage capacity, can be persistent or session-based, domain-specific. Sent to the server on every request.
+- `localStorage`: Suitable for long-term storage, data persists even after the browser is closed, accessible across all tabs and windows of the same origin, highest storage capacity among the three.
+- `sessionStorage`: Suitable for temporary data within a single page session, data is cleared when the tab or window is closed, has a higher storage capacity compared to cookies.
+
+More:
+
+- Common properties of these storage types:
+  - The clients can read and modify the values (except for HttpOnly cookies).
+  - Key-value based storage.
+  - They are only able to store values as strings. Non-strings will have to be serialized into a string (e.g. `JSON.stringify()`) in order to be stored.
+- Cookies are sent to the server on every HTTP request so the low maximum size is a feature that prevents your HTTP requests from being too large due to cookies
+
+## [What's the difference between a `relative`, `fixed`, `absolute`, `sticky` and `static`-ally positioned element?](https://www.greatfrontend.com/questions/quiz/whats-the-difference-between-a-relative-fixed-absolute-and-statically-positioned-element?list=one-week)
+
+A positioned element is an element whose computed `position` property is either `relative`, `absolute`, `fixed` or `sticky`.
+
+- `static`: The default position; the element will flow into the page as it normally would. The `top`, `right`, `bottom`, `left` and `z-index` properties do not apply.
+- `relative`: The element's position is adjusted relative to itself, without changing layout (and thus leaving a gap for the element where it would have been had it not been positioned).
+- `absolute`: The element is removed from the flow of the page and positioned at a specified position relative to its closest positioned ancestor if any, or otherwise relative to the initial containing block. Absolutely-positioned boxes can have margins, and they do not collapse with any other margins. These elements do not affect the position of other elements.
+- `fixed`: The element is removed from the flow of the page and positioned at a specified position relative to the viewport and doesn't move when scrolled.
+- `sticky`: Sticky positioning is a hybrid of relative and fixed positioning. The element is treated as `relative` positioned until it crosses a specified threshold, at which point it is treated as `fixed`-positioned.
+
+## [What's the difference between `inline` and `inline-block`?](https://www.greatfrontend.com/questions/quiz/whats-the-difference-between-inline-and-inline-block?list=one-week)
+
+| Property                             | `block`                                                                                     | `inline-block`                                                      | `inline`                                                                                                                                                                                                             |
+| ------------------------------------ | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Size                                 | Fills up the width of its parent container.                                                 | Depends on content.                                                 | Depends on content.                                                                                                                                                                                                  |
+| Positioning                          | Start on a new line and tolerates no HTML elements next to it (except when you add `float`) | Flows along with other content and allows other elements beside it. | Flows along with other content and allows other elements beside it.                                                                                                                                                  |
+| Can specify `width` and `height`     | Yes                                                                                         | Yes                                                                 | No. Will ignore if being set.                                                                                                                                                                                        |
+| Can be aligned with `vertical-align` | No                                                                                          | Yes                                                                 | Yes                                                                                                                                                                                                                  |
+| Margins and paddings                 | All sides respected.                                                                        | All sides respected.                                                | Only horizontal sides respected. Vertical sides, if specified, do not affect layout. Vertical space it takes up depends on `line-height`, even though the `border` and `padding` appear visually around the content. |
+| Float                                | -                                                                                           | -                                                                   | Becomes like a `block` element where you can set vertical margins and paddings.                                                                                                                                      |
+
+## [Can you offer a use case for the new arrow => function syntax?](https://www.greatfrontend.com/questions/quiz/can-you-offer-a-use-case-for-the-new-arrow-function-syntax-how-does-this-new-syntax-differ-from-other-functions?list=one-week)
+
+Advantages of arrow functions
+
+- `this` Behavior: Arrow functions do not have their own `this`. Instead, they inherit `this` from the parent scope at the time they are defined. This is particularly useful in scenarios where you are dealing with callbacks and want to retain the context of `this`.
+- Implicit Return: If the function body consists of a single expression, arrow functions allow you to omit the return keyword and the curly braces.
+
+When to use arrow functions
+
+- In callback functions where you want to preserve the lexical scope of `this`.
+
+When not to use arrow functions
+
+- Methods in objects: Arrow functions do not have their own `this` context, which can lead to unexpected behavior in object methods.
+- As constructors: Arrow functions cannot be used as constructors and will throw an error if used with the new keyword.
+- When you need to use function hoisting: Arrow functions are not hoisted, unlike traditional function declarations.
+
+
+## [Why is it generally a good idea to position CSS `<link>`s between `<head></head>` and JS `<script>`s just before `</body>`?](https://www.greatfrontend.com/questions/quiz/css-link-between-head-and-js-script-just-before-body?list=one-week)
+
+Placing `<link>`s in `<head>`:
+
+- Placing CSS `<link>`s in the `<head>` ensures that the stylesheets are loaded and ready for use when the browser starts rendering the page.
+- When a page first loads, HTML creates the DOM (Document Object Model) and CSS creates the CSSOM (CSS Object Model). Both are needed to create the visuals in a website, allowing for a quick "first meaningful paint" timing. 
+- Putting stylesheets near the bottom of the document is what prohibits progressive rendering in many browsers.
+
+Placing `<script>`s just before `</body>`:
+
+- `<script>` tags block HTML parsing while they are being downloaded and executed which can slow down the display of your page. Placing the `<script>`s at the bottom will allow the HTML to be parsed and displayed to the user first.
+  

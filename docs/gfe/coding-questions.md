@@ -220,66 +220,154 @@ import TabItem from '@theme/TabItem';
 <Tabs>
   <TabItem value="try-a" label="Try A" default>
   ```ts
-  interface JQuery {
-    css: (
-      prop: string,
-      value?: boolean | string | number
-    ) => JQuery | string | undefined;
-  }
+    interface JQuery {
+      css: (
+        prop: string,
+        value?: boolean | string | number
+      ) => JQuery | string | undefined;
+    }
 
-export default function $(selector: string): JQuery {
-const targetEl = document.querySelector(selector);
+    export default function $(selector: string): JQuery {
+    const targetEl = document.querySelector(selector);
+      return {
+        css: function (prop, value) {
+          if (value !== undefined) {
+            targetEl?.style[prop] = value;
+            return this;
+          }
 
-    return {
-      css: function (prop, value) {
-        if (value !== undefined) {
-          targetEl?.style[prop] = value;
-          return this;
-        }
-
-        const styleValue = targetEl?.style[prop];
-        return styleValue === "" ? undefined : styleValue;
-      },
-    };
-
-}
-
-````
+          const styleValue = targetEl?.style[prop];
+          return styleValue === "" ? undefined : styleValue;
+        },
+      };
+    }
+    ```
 
   </TabItem>
   <TabItem value="try-b" label="Try B">
-  ```ts
-  interface JQuery {
-    css: (
-      prop: string,
-      value?: boolean | string | number,
-    ) => JQuery | string | undefined;
-  }
-
-  class JQuery {
-    constructor(selector: string) {
-      this.targetEl = document.querySelector(selector);
-    }
-
-    css(prop, value) {
-      if (value !== undefined) {
-        this.targetEl?.style[prop] = value;
-        return this;
+    ```ts
+    interface JQuery {
+        css: (
+          prop: string,
+          value?: boolean | string | number,
+        ) => JQuery | string | undefined;
       }
 
-      const styleValue = this.targetEl?.style[prop];
-      return styleValue === "" ? undefined : styleValue;
+    class JQuery {
+      constructor(selector: string) {
+        this.targetEl = document.querySelector(selector);
+      }
+
+      css(prop, value) {
+        if (value !== undefined) {
+          this.targetEl?.style[prop] = value;
+          return this;
+        }
+
+        const styleValue = this.targetEl?.style[prop];
+        return styleValue === "" ? undefined : styleValue;
+      }
+
+    }
+
+      export default function $(selector: string): JQuery {
+      return new JQuery(selector);
+    }
+    ```
+
+  </TabItem>
+</Tabs>
+
+## [Debounce](https://www.greatfrontend.com/questions/javascript/debounce?list=one-week)
+
+```js
+export default function debounce(func: Function, wait: number): Function {
+  let timeoutId = null;
+  return function (...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func.call(this, ...args);
+    }, wait);
+  };
+}
+```
+
+## [Curry](https://www.greatfrontend.com/questions/javascript/curry?list=one-week)
+
+```ts
+export default function curry(func: Function): Function {
+  return function recursive(this: any, ...args: any[]) {
+    if (args.length === func.length) {
+      return func.call(this, ...args);
+    }
+
+    return (arg: any) => {
+      if (arg === undefined) {
+        return recursive.call(this, ...args);
+      }
+      return recursive.call(this, ...[...args, arg]);
+    };
+  };
+}
+```
+
+## [Classnames](https://www.greatfrontend.com/questions/javascript/classnames?list=one-week)
+
+```ts
+export type ClassValue =
+  | ClassArray
+  | ClassDictionary
+  | string
+  | number
+  | null
+  | boolean
+  | undefined;
+export type ClassDictionary = Record<string, any>;
+export type ClassArray = Array<ClassValue>;
+
+export default function classNames(...args: Array<ClassValue>): string {
+  const classes: Array<string> = [];
+
+  function handle(value: any) {
+    if (!Boolean(value)) {
+      return;
+    }
+
+    if (Array.isArray(value)) {
+      value.forEach((v) => {
+        handle(v);
+      });
+      return;
+    }
+
+    if (typeof value === "object") {
+      const validClasses = Object.entries(value).reduce<string[]>((acc, cv) => {
+        const [key, value] = cv;
+        if (value) {
+          return [...acc, key];
+        }
+        return acc;
+      }, []);
+      classes.push(...validClasses);
+      return;
+    }
+
+    if (typeof value === "string") {
+      classes.push(value);
+      return;
+    }
+
+    if (typeof value === "number") {
+      classes.push(value.toString());
+      return;
     }
   }
 
-  export default function $(selector: string): JQuery {
-    return new JQuery(selector);
-  }
+  handle(args);
+
+  return classes.join(" ");
+}
 
 ```
 
-</TabItem>
-</Tabs>
-
-
-````
+## [asdf](asfd)
