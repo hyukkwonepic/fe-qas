@@ -404,3 +404,56 @@ Placing `<script>`s just before `</body>`:
 
 - `<script>` tags block HTML parsing while they are being downloaded and executed which can slow down the display of your page. Placing the `<script>`s at the bottom will allow the HTML to be parsed and displayed to the user first.
   
+
+## [Describe event bubbling](https://www.greatfrontend.com/questions/quiz/describe-event-bubbling?list=one-week)
+
+- Event bubbling is a DOM event propagation mechanism where an event (e.g. a click), starts at the target element and bubbles up to the root of the document. This allows ancestor elements to also respond to the event.
+
+- Event bubbling can be stopped during the bubbling phase using the stopPropagation() method.
+
+- Event bubbling is essential for event delegation, where a single event handler manages events for multiple child elements, enhancing performance and code simplicity.
+
+- This approach scales well when the items are dynamic as no new event handlers have to be added or removed when the list of items change.
+
+## [Describe event capturing](https://www.greatfrontend.com/questions/quiz/describe-event-capturing?list=one-week)
+
+- Event capturing is a lesser-used counterpart to event bubbling in the DOM event propagation mechanism. It follows the opposite order, where an event triggers first on the ancestor element and then travels down to the target element.
+
+- Custom dropdown menus:: When building custom dropdown menus, you might want to capture clicks outside the menu element to close the menu. Using capture: true on the document object allows you to listen for clicks anywhere on the page and close the menu if the click happens outside its boundaries.
+
+## [Explain `Function.prototype.bind`](https://www.greatfrontend.com/questions/quiz/explain-function-prototype-bind?list=one-week)
+
+- `Function.prototype.bind` is a method in JavaScript that allows you to create a new function with a specific `this` value and optional initial arguments. 
+- Binding `this` value to preserve context: The primary purpose of bind is to bind the `this` value of a function to a specific object. When you call `func.bind(thisArg)`, it creates a new function with the same body as func, but with `this` permanently bound to thisArg.
+
+Use cases:
+
+- ```js
+  class Person {
+    constructor(name) {
+      this.name = name;
+    }
+    greet() {
+      console.log(`Hello, my name is ${this.name}`);
+    },
+  };
+
+  const john = new Person('John Doe');
+
+  // Without bind(), `this` inside the callback will be the global object
+  setTimeout(john.greet, 1000); // Output: "Hello, my name is undefined"
+
+  // Using bind() to fix the `this` value
+  setTimeout(john.greet.bind(john), 2000); // Output: "Hello, my name is John Doe"
+
+  ```
+
+- ```js
+  function multiply(a, b) {
+    return a * b;
+  }
+
+  // Using bind() to create a new function with some arguments pre-set
+  const multiplyBy5 = multiply.bind(null, 5);
+  console.log(multiplyBy5(3)); // Output: 15
+  ```

@@ -370,4 +370,161 @@ export default function classNames(...args: Array<ClassValue>): string {
 
 ```
 
-## [asdf](asfd)
+## [Flatten](https://www.greatfrontend.com/questions/javascript/flatten?list=one-week)
+
+<Tabs>
+  <TabItem value="try-a" label="Try A" default>
+  ```ts
+  type ArrayValue = any | Array<ArrayValue>;
+
+  export default function flatten(value: Array<ArrayValue>): Array<any> {
+    const result: any[] = [];
+
+    const handler = (val: any[]) => {
+      if (Array.isArray(val)) {
+        val.forEach(v => handler(v));
+        return;
+      }
+
+      result.push(val);
+    }
+
+    handler(value);
+
+    return result;
+  }
+  ```
+  </TabItem>
+  <TabItem value="try-b" label="Try B">
+  ```ts
+  type ArrayValue = any | Array<ArrayValue>;
+
+  export default function flatten(value: Array<ArrayValue>): Array<any> {
+    const result: any[] = [];
+    const temp = [...value];
+
+    while (temp.length > 0) {
+      const value = temp.shift();
+
+      if (Array.isArray(value)) {
+        temp.unshift(...value);
+        continue;
+      }
+
+      result.push(value);
+    }
+    
+    return result;
+  }
+  ```
+  </TabItem>
+  <TabItem value="try-c" label="Try C">
+  ```ts
+  export default function flatten(value: Array<ArrayValue>): Array<any> {
+    return value.reduce((acc, cv) => {
+      if (Array.isArray(cv)) {
+        return [
+          ...acc,
+          ...flatten(cv)
+        ]
+      }
+
+      return [
+        ...acc,
+        cv
+      ]
+    }, [])
+  }
+  ```
+  </TabItem>
+</Tabs>
+
+
+## [Promise.all](https://www.greatfrontend.com/questions/javascript/promise-all?list=one-week)
+
+```ts
+export default function promiseAll<T extends readonly unknown[] | []>(
+  iterable: T,
+): Promise<{ -readonly [P in keyof T]: Awaited<T[P]> }> {
+  
+  return new Promise((resolve, reject) => {
+    if (iterable.length === 0) {
+      resolve([] as { -readonly [P in keyof T]: Awaited<T[P]> });
+      return;
+    }
+
+    let count = 0;
+    const results = [];
+
+    for (let i = 0; i < iterable.length; i += 1) {
+      const item = iterable[i];
+
+      (async () => {
+        try {
+          const result = await item;
+          count += 1;
+          results[i] = result;
+
+          if (count === iterable.length) {
+            resolve(results as { -readonly [P in keyof T]: Awaited<T[P]> });
+            return;
+          }
+        } catch (error) {
+          reject(error);
+        }
+      })();
+    }
+  })
+}
+```
+
+## [Todo List](https://www.greatfrontend.com/questions/user-interface/todo-list/vanilla)
+
+```js
+import "./styles.css";
+
+const DEFAULT_TASKS = ["Walk the dog", "Water the plants", "Wash the dishes"];
+
+function createTaskEl(task) {
+  const templateEl = document.createElement("template");
+  templateEl.innerHTML = `
+        <li>
+            <span>${task}</span>
+            <button>Delete</button>
+        </li>
+    `;
+
+  const el = templateEl.content.firstElementChild;
+
+  const buttonEl = el.querySelector("button");
+
+  buttonEl.addEventListener("click", (event) => {
+    el.remove();
+  });
+
+  return el;
+}
+
+const ulEl = document.querySelector("ul");
+
+const formEl = document.querySelector("form");
+
+formEl.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const inputEl = formEl.querySelector("input");
+  if (inputEl.value === "") {
+    return;
+  }
+
+  ulEl.appendChild(createTaskEl(inputEl.value));
+  formEl.reset();
+  inputEl.focus();
+});
+
+(() => {
+  DEFAULT_TASKS.forEach((task) => {
+    ulEl.appendChild(createTaskEl(task));
+  });
+})();
+
+```
