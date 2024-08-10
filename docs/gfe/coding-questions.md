@@ -1,6 +1,6 @@
 # Coding questions
 
-## [Counter](https://www.greatfrontend.com/questions/user-interface/counter)
+### [Counter](https://www.greatfrontend.com/questions/user-interface/counter)
 
 ```jsx
 import { useState } from "react";
@@ -30,7 +30,7 @@ export default function App() {
 - It's the simplest and easiest coding question.
 - Just chaning the method to `count + 1` was enough.
 
-## [Contact Form](https://www.greatfrontend.com/questions/user-interface/contact-form)
+### [Contact Form](https://www.greatfrontend.com/questions/user-interface/contact-form)
 
 ```jsx
 import "./styles.css";
@@ -81,7 +81,7 @@ export default function App() {
 - The name attribute in input or textarea becomes the key of the form data that is submitted to the server. So we set name, email and message as the corresponding name attributes.
 - The submit type input renders a submit button inside the form. We can use a button with type="submit" instead of it.
 
-## [Holy Grail](https://www.greatfrontend.com/questions/user-interface/holy-grail)
+### [Holy Grail](https://www.greatfrontend.com/questions/user-interface/holy-grail)
 
 ```jsx
 import "./styles.css";
@@ -160,7 +160,7 @@ footer {
 }
 ```
 
-## [Array.prototype.filter](https://www.greatfrontend.com/questions/javascript/array-filter?list=one-week)
+### [Array.prototype.filter](https://www.greatfrontend.com/questions/javascript/array-filter?list=one-week)
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -215,7 +215,7 @@ import TabItem from '@theme/TabItem';
   </TabItem>
 </Tabs>
 
-## [jQuery.css](https://www.greatfrontend.com/questions/javascript/jquery-css?list=one-week)
+### [jQuery.css](https://www.greatfrontend.com/questions/javascript/jquery-css?list=one-week)
 
 <Tabs>
   <TabItem value="try-a" label="Try A" default>
@@ -278,7 +278,7 @@ import TabItem from '@theme/TabItem';
   </TabItem>
 </Tabs>
 
-## [Debounce](https://www.greatfrontend.com/questions/javascript/debounce?list=one-week)
+### [Debounce](https://www.greatfrontend.com/questions/javascript/debounce?list=one-week)
 
 ```js
 export default function debounce(func: Function, wait: number): Function {
@@ -292,7 +292,7 @@ export default function debounce(func: Function, wait: number): Function {
 }
 ```
 
-## [Curry](https://www.greatfrontend.com/questions/javascript/curry?list=one-week)
+### [Curry](https://www.greatfrontend.com/questions/javascript/curry?list=one-week)
 
 ```ts
 export default function curry(func: Function): Function {
@@ -311,7 +311,7 @@ export default function curry(func: Function): Function {
 }
 ```
 
-## [Classnames](https://www.greatfrontend.com/questions/javascript/classnames?list=one-week)
+### [Classnames](https://www.greatfrontend.com/questions/javascript/classnames?list=one-week)
 
 ```ts
 export type ClassValue =
@@ -370,7 +370,7 @@ export default function classNames(...args: Array<ClassValue>): string {
 
 ```
 
-## [Flatten](https://www.greatfrontend.com/questions/javascript/flatten?list=one-week)
+### [Flatten](https://www.greatfrontend.com/questions/javascript/flatten?list=one-week)
 
 <Tabs>
   <TabItem value="try-a" label="Try A" default>
@@ -440,7 +440,7 @@ export default function classNames(...args: Array<ClassValue>): string {
 </Tabs>
 
 
-## [Promise.all](https://www.greatfrontend.com/questions/javascript/promise-all?list=one-week)
+### [Promise.all](https://www.greatfrontend.com/questions/javascript/promise-all?list=one-week)
 
 ```ts
 export default function promiseAll<T extends readonly unknown[] | []>(
@@ -478,7 +478,7 @@ export default function promiseAll<T extends readonly unknown[] | []>(
 }
 ```
 
-## [Todo List](https://www.greatfrontend.com/questions/user-interface/todo-list/vanilla)
+### [Todo List](https://www.greatfrontend.com/questions/user-interface/todo-list/vanilla)
 
 ```js
 import "./styles.css";
@@ -527,4 +527,35 @@ formEl.addEventListener("submit", (event) => {
   });
 })();
 
+```
+
+### [getElementsByTagName](https://www.greatfrontend.com/questions/javascript/get-elements-by-tag-name?list=one-week)
+
+```ts
+export default function getElementsByTagName(
+  el: Element,
+  tagName: string
+): Array<Element> {
+  const results: Array<Element> = [];
+
+  function traverse(element: Element) {
+    if (element.tagName === tagName.toUpperCase()) {
+      if (el !== element) {
+        results.push(element);
+      }
+    }
+
+    if (element.children.length === 0) {
+      return;
+    }
+
+    [...element.children].forEach((el) => {
+      traverse(el);
+    });
+  }
+
+  traverse(el);
+
+  return results;
+}
 ```

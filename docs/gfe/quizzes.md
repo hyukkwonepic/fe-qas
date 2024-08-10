@@ -5,7 +5,7 @@ description: A set of answers to the quiz questions from GFE
 
 # Quizzes
 
-## [Explain how prototypal inheritance works](https://www.greatfrontend.com/questions/quiz/explain-how-prototypal-inheritance-works)
+### [Explain how prototypal inheritance works](https://www.greatfrontend.com/questions/quiz/explain-how-prototypal-inheritance-works)
 
 - Prototypical inheritance is a way for objects to inherit properties and methods from other objects
 
@@ -17,7 +17,7 @@ description: A set of answers to the quiz questions from GFE
 
 - Inherited objects can be made by using the object-dot-create method. If there is a need to change the prototype of an existing object, you can use the object-dot-set-prototype-of method.
 
-## [Describe the difference between `<script>`, `<script async>` and `<script defer>`](https://www.greatfrontend.com/questions/quiz/describe-the-difference-between-script-async-and-script-defer?list=one-week)
+### [Describe the difference between `<script>`, `<script async>` and `<script defer>`](https://www.greatfrontend.com/questions/quiz/describe-the-difference-between-script-async-and-script-defer?list=one-week)
 
 **`<script>`**
 
@@ -51,7 +51,7 @@ description: A set of answers to the quiz questions from GFE
 
 - It’s good to use the defer option when the script depends on other scripts on the page or manipulates DOM elements.
 
-## [Explain how `this` works in JavaScript](https://www.greatfrontend.com/questions/quiz/explain-how-this-works-in-javascript)
+### [Explain how `this` works in JavaScript](https://www.greatfrontend.com/questions/quiz/explain-how-this-works-in-javascript)
 
 - A hand-wavey explanation is that the value of this depends on how the function is called.
 
@@ -125,7 +125,7 @@ The following rules are applied to this:
    arrowFn(); // -> { value: 'abc', createArrowFn: ƒ }
    ```
 
-## [Explain your understanding of the box model and how you would tell the browser in CSS to render your layout in different box models](https://www.greatfrontend.com/questions/quiz/explain-your-understanding-of-the-box-model-and-how-you-would-tell-the-browser-in-css-to-render-your-layout-in-different-box-models)
+### [Explain your understanding of the box model and how you would tell the browser in CSS to render your layout in different box models](https://www.greatfrontend.com/questions/quiz/explain-your-understanding-of-the-box-model-and-how-you-would-tell-the-browser-in-css-to-render-your-layout-in-different-box-models)
 
 The CSS box model describes how elements are rendered as rectangular boxes, consisting of content, padding, border, and margin.
 
@@ -159,7 +159,7 @@ There are two main box models:
 - To specify the box model, use the `box-sizing` property:
 - Margins always remain outside the box in both models.
 
-## [What are the differences between variables created using `let`, `var` or `const`?](https://www.greatfrontend.com/questions/quiz/what-are-the-differences-between-variables-created-using-let-var-or-const)
+### [What are the differences between variables created using `let`, `var` or `const`?](https://www.greatfrontend.com/questions/quiz/what-are-the-differences-between-variables-created-using-let-var-or-const)
 
 In JavaScript, let, var, and const are all keywords used to declare variables, but they differ significantly in various aspects.
 
@@ -218,12 +218,12 @@ In JavaScript, let, var, and const are all keywords used to declare variables, b
     - `console.log(y)` is executed. Since `y` is in the TDZ and no property exists for it yet in the lexical environment, this throws a ReferenceError.
     - The declaration and initialization `let y = 10` is never reached due to the error. If it were reached, this is where a property would be created in the lexical environment and initialized with the value 10.
 
-## [What does `* { box-sizing: border-box; }` do?](https://www.greatfrontend.com/questions/quiz/what-does-box-sizing-border-box-do-what-are-its-advantages)
+### [What does `* { box-sizing: border-box; }` do?](https://www.greatfrontend.com/questions/quiz/what-does-box-sizing-border-box-do-what-are-its-advantages)
 
 - By default, elements have `box-sizing: content-box` applied, and only the content size is being accounted for if an element has height and width specified. `box-sizing: border-box` changes how the width and height of elements are being calculated, border and padding are also being included in the calculation.
 - Taking into account paddings and borders as part of the box model resonates better with how designers actually imagine content in grids. This is a much more intuitive way to think about boxes and hence many CSS frameworks set `* { box-sizing: border-box; }` globally, so that all elements use such a box model by default.
 
-## [What is CSS selector specificity and how does it work?](<[asdf](https://www.greatfrontend.com/questions/quiz/what-is-css-selector-specificity-and-how-does-it-work)>)
+### [What is CSS selector specificity and how does it work?](https://www.greatfrontend.com/questions/quiz/what-is-css-selector-specificity-and-how-does-it-work)
 
 - According to the CSS specification, specificity is calculated as a three-part value: A, B, C. Each part represents:
 
@@ -242,7 +242,7 @@ In JavaScript, let, var, and const are all keywords used to declare variables, b
 - `!important` can override specificity, it's generally considered a last resort.
 - When writing CSS UI component library code, it is important that they have low specificities so that users of the library can override them
 
-## [What is the CSS `display` property and can you give a few examples of its use?](https://www.greatfrontend.com/questions/quiz/what-is-the-css-display-property-and-can-you-give-a-few-examples-of-its-use)
+### [What is the CSS `display` property and can you give a few examples of its use?](https://www.greatfrontend.com/questions/quiz/what-is-the-css-display-property-and-can-you-give-a-few-examples-of-its-use)
 
 | `display` Value | Description                                                                                                                                                                                                            |
 | :-------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -257,7 +257,7 @@ In JavaScript, let, var, and const are all keywords used to declare variables, b
 | `table-cell`    | Behaves like the `<td>` element.                                                                                                                                                                                       |
 | `list-item`     | Behaves like a `<li>` element which allows it to define `list-style-type` and `list-style-position`.                                                                                                                   |
 
-## [What is the difference between `==` and `===` in JavaScript?](https://www.greatfrontend.com/questions/quiz/what-is-the-difference-between-double-equal-and-triple-equal)
+### [What is the difference between `==` and `===` in JavaScript?](https://www.greatfrontend.com/questions/quiz/what-is-the-difference-between-double-equal-and-triple-equal)
 
 - The `==` operator will compare for equality after doing any necessary type conversions.
 
@@ -288,7 +288,7 @@ In JavaScript, let, var, and const are all keywords used to declare variables, b
   - Use `===` when you want to ensure both the value and the type are the same, which is the safer and more predictable choice in most cases.
 - Using `===` (strict equality) is generally recommended to avoid the pitfalls of type coercion, which can lead to unexpected behavior and bugs in your code. It makes the intent of your comparisons clearer and ensures that you are comparing both the value and the type.
 
-## [What's the difference between a variable that is: `null`, `undefined` or undeclared?](https://www.greatfrontend.com/questions/quiz/whats-the-difference-between-a-variable-that-is-null-undefined-or-undeclared-how-would-you-go-about-checking-for-any-of-these-states?list=one-week)
+### [What's the difference between a variable that is: `null`, `undefined` or undeclared?](https://www.greatfrontend.com/questions/quiz/whats-the-difference-between-a-variable-that-is-null-undefined-or-undeclared-how-would-you-go-about-checking-for-any-of-these-states?list=one-week)
 
 - Undeclared variables are created when you assign a value to an identifier that is not previously created using `var`, `let` or `const`. In strict mode, a `ReferenceError` will be thrown when you try to assign to an undeclared variable. Undeclared variables will be defined globally, outside of the current scope.
 
@@ -321,7 +321,7 @@ In JavaScript, let, var, and const are all keywords used to declare variables, b
     console.log(typeof foo === "object"); // true
     ```
 
-## [What's the difference between `.call` and `.apply`?](https://www.greatfrontend.com/questions/quiz/whats-the-difference-between-call-and-apply?list=one-week)
+### [What's the difference between `.call` and `.apply`?](https://www.greatfrontend.com/questions/quiz/whats-the-difference-between-call-and-apply?list=one-week)
 
 `.call` and `.apply` are both used to invoke functions with a specific this context and arguments. The primary difference lies in how they accept arguments:
 
@@ -337,7 +337,7 @@ console.log(add.call(null, 1, 2)); // 3
 console.log(add.apply(null, [1, 2])); // 3
 ```
 
-## [Describe the difference between a cookie, `sessionStorage` and `localStorage`.](https://www.greatfrontend.com/questions/quiz/describe-the-difference-between-a-cookie-sessionstorage-and-localstorage?list=one-week)
+### [Describe the difference between a cookie, `sessionStorage` and `localStorage`.](https://www.greatfrontend.com/questions/quiz/describe-the-difference-between-a-cookie-sessionstorage-and-localstorage?list=one-week)
 
 All of the following are mechanisms of storing data on the client, the user's browser in this case. localStorage and sessionStorage both implement the Web Storage API interface.
 
@@ -353,7 +353,7 @@ More:
   - They are only able to store values as strings. Non-strings will have to be serialized into a string (e.g. `JSON.stringify()`) in order to be stored.
 - Cookies are sent to the server on every HTTP request so the low maximum size is a feature that prevents your HTTP requests from being too large due to cookies
 
-## [What's the difference between a `relative`, `fixed`, `absolute`, `sticky` and `static`-ally positioned element?](https://www.greatfrontend.com/questions/quiz/whats-the-difference-between-a-relative-fixed-absolute-and-statically-positioned-element?list=one-week)
+### [What's the difference between a `relative`, `fixed`, `absolute`, `sticky` and `static`-ally positioned element?](https://www.greatfrontend.com/questions/quiz/whats-the-difference-between-a-relative-fixed-absolute-and-statically-positioned-element?list=one-week)
 
 A positioned element is an element whose computed `position` property is either `relative`, `absolute`, `fixed` or `sticky`.
 
@@ -363,7 +363,7 @@ A positioned element is an element whose computed `position` property is either 
 - `fixed`: The element is removed from the flow of the page and positioned at a specified position relative to the viewport and doesn't move when scrolled.
 - `sticky`: Sticky positioning is a hybrid of relative and fixed positioning. The element is treated as `relative` positioned until it crosses a specified threshold, at which point it is treated as `fixed`-positioned.
 
-## [What's the difference between `inline` and `inline-block`?](https://www.greatfrontend.com/questions/quiz/whats-the-difference-between-inline-and-inline-block?list=one-week)
+### [What's the difference between `inline` and `inline-block`?](https://www.greatfrontend.com/questions/quiz/whats-the-difference-between-inline-and-inline-block?list=one-week)
 
 | Property                             | `block`                                                                                     | `inline-block`                                                      | `inline`                                                                                                                                                                                                             |
 | ------------------------------------ | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -374,7 +374,7 @@ A positioned element is an element whose computed `position` property is either 
 | Margins and paddings                 | All sides respected.                                                                        | All sides respected.                                                | Only horizontal sides respected. Vertical sides, if specified, do not affect layout. Vertical space it takes up depends on `line-height`, even though the `border` and `padding` appear visually around the content. |
 | Float                                | -                                                                                           | -                                                                   | Becomes like a `block` element where you can set vertical margins and paddings.                                                                                                                                      |
 
-## [Can you offer a use case for the new arrow => function syntax?](https://www.greatfrontend.com/questions/quiz/can-you-offer-a-use-case-for-the-new-arrow-function-syntax-how-does-this-new-syntax-differ-from-other-functions?list=one-week)
+### [Can you offer a use case for the new arrow => function syntax?](https://www.greatfrontend.com/questions/quiz/can-you-offer-a-use-case-for-the-new-arrow-function-syntax-how-does-this-new-syntax-differ-from-other-functions?list=one-week)
 
 Advantages of arrow functions
 
@@ -392,7 +392,7 @@ When not to use arrow functions
 - When you need to use function hoisting: Arrow functions are not hoisted, unlike traditional function declarations.
 
 
-## [Why is it generally a good idea to position CSS `<link>`s between `<head></head>` and JS `<script>`s just before `</body>`?](https://www.greatfrontend.com/questions/quiz/css-link-between-head-and-js-script-just-before-body?list=one-week)
+### [Why is it generally a good idea to position CSS `<link>`s between `<head></head>` and JS `<script>`s just before `</body>`?](https://www.greatfrontend.com/questions/quiz/css-link-between-head-and-js-script-just-before-body?list=one-week)
 
 Placing `<link>`s in `<head>`:
 
@@ -405,7 +405,7 @@ Placing `<script>`s just before `</body>`:
 - `<script>` tags block HTML parsing while they are being downloaded and executed which can slow down the display of your page. Placing the `<script>`s at the bottom will allow the HTML to be parsed and displayed to the user first.
   
 
-## [Describe event bubbling](https://www.greatfrontend.com/questions/quiz/describe-event-bubbling?list=one-week)
+### [Describe event bubbling](https://www.greatfrontend.com/questions/quiz/describe-event-bubbling?list=one-week)
 
 - Event bubbling is a DOM event propagation mechanism where an event (e.g. a click), starts at the target element and bubbles up to the root of the document. This allows ancestor elements to also respond to the event.
 
@@ -415,13 +415,13 @@ Placing `<script>`s just before `</body>`:
 
 - This approach scales well when the items are dynamic as no new event handlers have to be added or removed when the list of items change.
 
-## [Describe event capturing](https://www.greatfrontend.com/questions/quiz/describe-event-capturing?list=one-week)
+### [Describe event capturing](https://www.greatfrontend.com/questions/quiz/describe-event-capturing?list=one-week)
 
 - Event capturing is a lesser-used counterpart to event bubbling in the DOM event propagation mechanism. It follows the opposite order, where an event triggers first on the ancestor element and then travels down to the target element.
 
 - Custom dropdown menus:: When building custom dropdown menus, you might want to capture clicks outside the menu element to close the menu. Using capture: true on the document object allows you to listen for clicks anywhere on the page and close the menu if the click happens outside its boundaries.
 
-## [Explain `Function.prototype.bind`](https://www.greatfrontend.com/questions/quiz/explain-function-prototype-bind?list=one-week)
+### [Explain `Function.prototype.bind`](https://www.greatfrontend.com/questions/quiz/explain-function-prototype-bind?list=one-week)
 
 - `Function.prototype.bind` is a method in JavaScript that allows you to create a new function with a specific `this` value and optional initial arguments. 
 - Binding `this` value to preserve context: The primary purpose of bind is to bind the `this` value of a function to a specific object. When you call `func.bind(thisArg)`, it creates a new function with the same body as func, but with `this` permanently bound to thisArg.

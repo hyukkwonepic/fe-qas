@@ -3,8 +3,8 @@ import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
-  title: "FE Q&As",
-  tagline: "Q&A style learning materials for front-end development",
+  title: "Q&As",
+  tagline: "Q&A style learning materials for Hyukoo",
   favicon: "img/favicon.svg",
 
   // Set the production url of your site here
@@ -34,18 +34,19 @@ const config: Config = {
       "classic",
       {
         docs: {
+          routeBasePath: '',
           sidebarPath: "./sidebars.ts",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          // editUrl:
+          //   "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          // editUrl:
+          //   "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
         },
         theme: {
           customCss: "./src/css/custom.css",
@@ -58,7 +59,7 @@ const config: Config = {
     // Replace with your project's social card
     // image: "img/docusaurus-social-card.jpg",
     navbar: {
-      title: "FE Q&As",
+      title: "Q&As",
       // logo: {
       //   alt: "FE Q&As Logo",
       //   src: "img/logo.svg",

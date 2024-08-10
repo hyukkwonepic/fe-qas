@@ -1,6 +1,6 @@
-# FE Q&As
+# Q&As
 
-Q&A style learning materials for front-end development.
+Q&A style learning materials for Hyukoo.
 This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
 ### Installation

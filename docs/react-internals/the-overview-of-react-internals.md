@@ -1,8 +1,6 @@
 ---
-title: React Internals Deep Dive
+title: The Overview of React internals
 ---
-
-## [The Overview of React internals](https://jser.dev/2023-07-11-overall-of-react-internals)
 
 ### [What are the four main phases of React internals as described in the overview?](https://jser.dev/2023-07-11-overall-of-react-internals#3-the-overview-of-react-internals)
 
