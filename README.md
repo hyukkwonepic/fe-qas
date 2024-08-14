@@ -1,6 +1,6 @@
 # Q&As
 
-Q&A style learning materials for Hyukoo.
+Q&A style learning materials for software development.
 This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
 ### Installation
